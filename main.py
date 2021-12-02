@@ -26,7 +26,7 @@ def random_date(start, end):
     )
 
 
-def selectDificultiy(i: int):
+def selectdifficulty(i: int):
     start = datetime.datetime(2000-i*100, 1, 1)
     end = datetime.datetime(2000+i*100, 1, 1)
     return start, end
@@ -43,13 +43,13 @@ def dump(data):
     with open(jsonFile, 'w') as f:
         json.dump(data, f, indent=2)
 
-dificultiy = input("Welcome back Jan\nPlease select your dificultiy:")
+difficulty = input("Welcome back Jan\nPlease select your difficulty:")
 try:
-    dificultiy = int(dificultiy)
+    difficulty = int(difficulty)
 except:
-    print('Could not assign dificultiy. Select dificultiy = 1')
-    dificultiy = 1
-startDate, endDate = selectDificultiy(dificultiy)
+    print('Could not assign difficulty. Select difficulty = 1')
+    difficulty = 1
+startDate, endDate = selectdifficulty(difficulty)
 
 done = False
 while not done:
@@ -70,7 +70,7 @@ while not done:
 
     # save everything to a json file
     data = loadData()
-    data.append({"correct":correct, "Time" : timeTaken, 'dificultiy':dificultiy})
+    data.append({"correct":correct, "Time" : timeTaken, 'difficulty':difficulty})
     dump(data)
     
     # keep playing question
