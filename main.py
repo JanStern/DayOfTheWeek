@@ -5,8 +5,10 @@ import time, os
 import plotly.graph_objs as go
 import pandas as pd
 
-
-jsonFile = os.path.dirname(__file__) + r'/statistics.json'
+path = os.path.dirname(__file__)
+if path[-1]!='/':
+    path += '/'
+jsonFile = path + r'statistics.json'
 
 weekday_d = {   0:['1', 'Monday', 'Montag', 'Mo', 'Mon'],
                 1:['2', 'Tuesday', 'Dienstag', 'Tue', 'Tu', 'Di'],
@@ -92,7 +94,7 @@ displayResults = input("See statistics? [Y/n]")
 
 if displayResults == 'y' or displayResults == 'Y':
 
-    with open(jsonFile) as f:
+    with open(jsonFile, 'r') as f:
         data = json.load(f)
 
     time = [d['Time'] for d in data]
